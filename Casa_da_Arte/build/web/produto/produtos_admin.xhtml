@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Produtos(Administrador)</title>
+    </h:head>
+    <h:body>
+        <div>
+            <h:outputLabel>Preço inicial:</h:outputLabel>
+            <h:inputText value="#{produtos.preco_inicial}"/>
+            <h:outputLabel>Preço final:</h:outputLabel>
+            <h:inputText value="#{produtos.preco_final}"/>
+            <h:outputLabel>Nome:</h:outputLabel>
+            <h:inputText value="#{produtos.nome}"/>
+            <h:commandButton value="Pesquisar" action="#{produtos.pesquisar()}"/>
+            <h:commandButton value="Todos" action="#{produtos.todos()}"/>
+            <h:commandButton value="Logout" action="#{produtos.logout()}"/>
+            <h:commandButton value="Deletar Usuario" action="#{produtos.deletarUsuario()}"/>
+            <h:commandButton value="Editar Usuario" action="/usuario/edicao"/>
+        </div>
+        <h:dataTable value="#{produto_repositorio.PRODUTOS}" var="produto" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd-row,order-table-even-row">
+            <h:column>
+    		<f:facet name="header">ID</f:facet>
+    		#{produto.id}
+            </h:column>
+            <h:column>
+    		<f:facet name="header">Nome</f:facet>
+    		#{produto.nome}
+            </h:column>
+            <h:column>
+    		<f:facet name="header">Descrição</f:facet>
+    		#{produto.descricao}
+            </h:column>
+            <h:column>
+    		<f:facet name="header">Preço</f:facet>
+    		#{produto.preco}
+            </h:column>            
+            <h:column>
+    		<f:facet name="header">Editar</f:facet>
+    		#{produtos_admin.editarProduto(produto)}
+            </h:column>
+            <h:column>
+    		<f:facet name="header">Deletar</f:facet>
+    		#{produtos_admin.deletarProduto(produto)}
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>
+

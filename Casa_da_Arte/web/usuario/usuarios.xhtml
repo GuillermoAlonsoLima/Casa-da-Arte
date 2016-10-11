@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lista de Usuarios</title>
+    </h:head>
+    <h:body>
+        <div><h:commandButton value="Voltar" action="/produto/produtos_admin"/></div>
+        <h:dataTable value="#{usuario_repositorio.USUARIOS}" var="usuario" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd-row,order-table-even-row">
+            <h:column>
+    		<f:facet name="header">ID</f:facet>
+    		#{usuario.id}
+            </h:column>
+            <h:column>
+    		<f:facet name="header">Nome</f:facet>
+    		#{usuario.nome}
+            </h:column>
+            <h:column>
+    		<f:facet name="header">Usuario</f:facet>
+    		#{usuario.usuario}
+            </h:column>
+            <h:column>
+    		<f:facet name="header">CEP</f:facet>
+    		#{usuario.cep}
+            </h:column>
+            <h:column>
+    		<f:facet name="header">Saldo</f:facet>
+    		#{usuario.saldo}
+            </h:column>
+            <h:column>
+    		<f:facet name="header">Deletar</f:facet>
+    		#{usuarios.deletarUsuario(usuario)}
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>
+
