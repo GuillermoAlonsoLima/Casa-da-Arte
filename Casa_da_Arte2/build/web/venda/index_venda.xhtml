@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Listar Vendas</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="estilo.css"  />
+        <h:form>
+            <table class="menu">
+                <tr>
+                    <td class="menuTd">
+                        Data inicial:<h:inputText value="#{indexVendaMB.data_inicial}"/>
+                        Data final:<h:inputText value="#{indexVendaMB.data_final}"/>
+                        <h:commandButton value="Pesquisar" action="#{indexVendaMB.pesquisarData()}"/>
+                    </td>
+                    <td class="menuTd"><h:commandButton value="Todos" action="#{indexVendaMB.todos()}"/></td>
+                </tr>
+                <tr>
+                    <td class="menuTd">
+                        Preço inicial:<h:inputText value="#{indexVendaMB.preco_inicial}"/>
+                        Preço final:<h:inputText value="#{indexVendaMB.preco_final}"/>
+                        <h:commandButton value="Pesquisar" action="#{indexVendaMB.pesquisarPreco()}"/>
+                    </td>
+                    <td class="menuTd"><h:button value="Voltar" outcome="/produto/index_produto_admin"/></td>
+                </tr>
+            </table>
+        </h:form>
+        <h:form>
+            <h:messages showDetail="true" errorStyle="color:red"/>
+            <h:dataTable value="#{indexVendaMB.vendas_tabela}" var="venda">
+                <h:column>    				
+                 <f:facet name="header">ID</f:facet>    				
+                #{venda.id}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Data da venda</f:facet>    				
+                #{indexVendaMB.dateToString(venda.data_venda)}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Comprador</f:facet>    				
+                 <h:commandLink value="#{venda.comprador.usuario}" action="#{indexVendaMB.visulizarComprador(venda.comprador)}"/>
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Produto</f:facet>    				
+                <h:commandLink value="#{venda.produto.nome}" action="#{indexVendaMB.visulizarProduto(venda.produto)}"/>
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Valor</f:facet>    				
+                #{venda.valor}
+                </h:column>
+            </h:dataTable>
+            <table>
+                <tr>
+                    <td>Valor final:</td>
+                    <td>#{indexVendaMB.total()}</td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Comprar Produto</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="estilo.css"  />
+        <h:form>
+            <div class="principal">
+                <p>Codigo:</p>
+                <h:outputText value="#{compraMB.codigo}"/>
+                <p>Quantidade:</p>
+                <h:outputText value="#{compraMB.quantidade}"/>
+                <p>Nome:</p>
+                <h:outputText value="#{compraMB.nome}"/>
+                <p>Empresa:</p>
+                <h:outputText value="#{compraMB.empresa}"/>
+                <p>Descrição:</p>
+                <h:outputText value="#{compraMB.descricao}"/>
+                <p>Preço:</p>
+                <h:outputText value="#{compraMB.preco}"/>
+                <p>Quantidade a comprar:</p>
+                <h:inputText value="#{compraMB.quantidade_comprar}"/>
+                <div class="botoes">
+                    <h:button value="Voltar" outcome="/produto/index_produto_usuario"/>
+                    <h:commandButton value="Comprar" action="#{compraMB.comprar()}"/>
+                    <h:messages showDetail="true" errorStyle="color:red"/>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

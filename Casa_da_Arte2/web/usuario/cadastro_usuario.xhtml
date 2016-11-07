@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastrar Usuario</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="estilo.css"  />
+        <h:form>
+            <div class="principal">
+                <p>Usuario:</p>
+                <h:inputText value="#{cadastroUsuarioMB.usuario}"/>
+                <p>Senha:</p>
+                <h:inputSecret value="#{cadastroUsuarioMB.senha}"/>
+                <p>Nome:</p>
+                <h:inputText value="#{cadastroUsuarioMB.nome}">
+                    <f:validateRegex pattern="[a-zA-Z ]+"/>
+                </h:inputText>
+                <p>Fixo:</p>
+                <h:inputText value="#{cadastroUsuarioMB.fixo}" maxlength="10"/>
+                <p>Celular:</p>
+                <h:inputText value="#{cadastroUsuarioMB.celular}" maxlength="10"/>
+                <p>E-mail:</p>
+                <h:inputText value="#{cadastroUsuarioMB.email}"/>
+                <p>Endereço:</p>
+                <h:inputTextarea value="#{cadastroUsuarioMB.endereco}"/>
+                <p>Cep:</p>
+                <h:inputText value="#{cadastroUsuarioMB.cep}" maxlength="8">
+                    <f:validateRegex pattern="[0-9]+" />
+                </h:inputText>
+                <p>Saldo:</p>
+                <h:inputText value="#{cadastroUsuarioMB.saldo}">
+                    <f:convertNumber pattern="0.00"/>
+                </h:inputText>
+                <div class="botoes">
+                    <h:button value="Voltar" outcome="/login/login"/>
+                    <h:commandButton value="Limpar" action="#{cadastroUsuarioMB.limpar()}"/>
+                    <h:commandButton value="Cadastrar" action="#{cadastroUsuarioMB.cadastrar()}"/>
+                    <h:messages showDetail="true" errorStyle="color:red"/>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Listar Usuarios</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="estilo.css"  />
+        <h:form>
+            <table class="menu">
+                <tr>
+                    <td>
+                        <h:selectOneMenu value="#{indexUsuarioMB.tipo_pesquisa}">
+                            <f:selectItem itemValue="usuario" itemLabel="Usuario:"/>
+                            <f:selectItem itemValue="nome" itemLabel="Nome:"/>
+                        </h:selectOneMenu>
+                        <h:inputText value="#{indexUsuarioMB.pesquisa}"/>
+                        <h:commandButton value="Pesquisar" action="#{indexUsuarioMB.pesquisar()}"/>
+                        <h:commandButton value="Todos" action="#{indexUsuarioMB.todos()}"/>
+                    </td>
+                    <td>
+                        <h:button value="Voltar" outcome="/produto/index_produto_admin"/>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+        <h:form>
+            <h:messages showDetail="true" errorStyle="color:red"/>
+            <h:dataTable value="#{indexUsuarioMB.usuarios_tabela}" var="usuario">
+                <h:column>    				
+                 <f:facet name="header">ID</f:facet>    				
+                #{usuario.id}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Usuario</f:facet>    				
+                #{usuario.usuario}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Nome</f:facet>    				
+                #{usuario.nome}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Fixo</f:facet>    				
+                #{usuario.fixo}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Celular</f:facet>    				
+                #{usuario.celular}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Email</f:facet>    				
+                #{usuario.email}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Endereço</f:facet>    				
+                #{usuario.endereco}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">CEP</f:facet>    				
+                #{usuario.usuario}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Data de cadastro</f:facet>    				
+                #{indexUsuarioMB.dateToString(usuario.data_cadastro)}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Saldo</f:facet>    				
+                #{usuario.saldo}
+                </h:column>
+                <h:column>    				
+                 <f:facet name="header">Deletar</f:facet>    				
+                 <h:commandButton value="Deletar" action="#{indexUsuarioMB.deletar(usuario)}"/>
+                </h:column>
+            </h:dataTable>
+            </h:form>
+    </h:body>
+</html>
+
